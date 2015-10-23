@@ -1,0 +1,7 @@
+<ul class="breadcrumb">
+  <li><a href="{{ crumbsArray.firstCrumb.url }}">{{ crumbsArray.firstCrumb.title }}</a></li>
+  <li><a href="{{ crumbsArray.secondCrumb.url }}">{{ crumbsArray.secondCrumb.title }}</a></li>
+  {% if crumbsArray.thirdCrumb != null %}
+    <li class="active">{{ crumbsArray.thirdCrumb.title }}</li>
+  {% endif %}
+</ul>

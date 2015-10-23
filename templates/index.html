@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Дмитрий Буряков - программирование и разработка</title>
+
+
+  <!-- Bootstrap -->
+  <link href="/blog/templates/css/bootstrap.css" rel="stylesheet">
+  <link href="/blog/templates/css/style.css" rel="stylesheet">
+  <script src="templates/js/functions.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
+  <script>tinymce.init({selector:'textarea'});</script>
+</head>
+<body>
+
+  {% include header %}
+
+  <div class="container">
+
+    {% if currentPage == "main" %}
+      {% include search %}
+    {% endif %}
+
+    {% if currentPage != "main" and currentPage != "adminpanel" %}
+      {% include way %}
+    {% endif %}
+
+    <div class="row">
+
+      {% include content %}
+
+    </div>
+
+  </div>
+  <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

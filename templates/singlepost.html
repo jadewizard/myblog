@@ -1,0 +1,11 @@
+{% for postElement in postArray %}
+<div class="col-md-6">
+    <div class="well">
+        <h3 class="media-heading"><a href="note/{{ postElement.id }}">{{ postElement.title }}</a></h2>
+            <p>{{ postElement.content }}</p>
+            <span class="label label-default">{{ postElement.postdate }}</span>
+            <span class="label label-default">Программирование и разработка</span>
+            <a href="note/{{ postElement.id }}" class="readmore">Читать далее</a>
+    </div>
+</div>
+{% endfor %}
