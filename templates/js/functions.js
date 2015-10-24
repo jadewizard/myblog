@@ -2,7 +2,7 @@ action = "add";
 /*Указываем, что первое действие - это
 добавление поста*/
 
-function addPost()
+function addPost(userAction)
 {
     title = document.getElementById('postTitle').value;
     //Получаем заголовок
@@ -10,6 +10,11 @@ function addPost()
     //Получаем текст
     errMsg = document.getElementById('errMsg');
     //Блок для ошибки
+
+    if(userAction == "updateCreatedPost")
+    {
+        action = "updateCreatedPost";
+    }
 
     if(title != '')
     {
@@ -25,7 +30,7 @@ function addPost()
                     "postTitle": title,
                     "action": action
                     //Текущее действие
-                    //Add или Update
+                    //Add или Update или updateCreatedPost
                 },
                 success: function(data)
                 {
