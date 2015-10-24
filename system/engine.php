@@ -26,5 +26,8 @@ $application = new application();
 
 $application->getBreadCrumbs();
 
+require_once 'actionhandler.php';
+//Обработка пользовательских действий
+
 require_once 'pages.php'; 
 //Работа со страницами сайта
