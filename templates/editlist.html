@@ -15,7 +15,7 @@
       <td>{{ element.title }}</td>
       <td>{{ element.category }}</td>
       <td>{{ element.postdate }}</td>
-      <td><a href="#" onclick="deletePost({{ element.id }})">Удалить</a> / Редктировать</td>
+      <td><a href="#" onclick="deletePost({{ element.id }})">Удалить</a> / <a href="?a=edit&id={{ element.id }}">Редктировать</a></td>
     </tr>
     {% endfor %}
   </tbody>
