@@ -49,7 +49,7 @@ elseif($_POST['action'] == "delete")
 }
 elseif($_POST['action'] == "updateCreatedPost")
 {
-    $id = $_GET['id'];
+    $id = $_POST['id'];
     $title = $_POST['postTitle'];
     $text = $_POST['postText'];
 
