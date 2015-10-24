@@ -18,7 +18,7 @@ function addPost()
             $.ajax
             ({
                 type: "POST",
-                url: "system/addpost.php",
+                url: "system/postaction.php",
                 data:
                 {
                     "postText": text,
@@ -49,4 +49,24 @@ function addPost()
     }
 
     console.log(action);
+}
+
+function deletePost(id)
+{
+    $.ajax
+    ({
+        type: "POST",
+        url: "system/postaction.php",
+        data:
+        {
+            "id": id,
+            "action": "delete"
+        },
+        success: function()
+        {
+            document.getElementById('tr'+id).innerHTML = '';
+            //Если пост был успешно удалён из БД, то удаляем блок
+            //этого поста с страницы редактирования постов
+        }
+    });
 }
