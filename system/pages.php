@@ -6,6 +6,8 @@
 * Buryakov.su
 */
 
+$adminContent = null;
+
 if(isset($_GET['p']))
 {
     $twig->addGlobal("currentPage", $_GET['p']);
@@ -16,6 +18,7 @@ if(isset($_GET['p']))
         case 'note':
             $content = "singlepost.html";
             break;
+
         case 'adminpanel':
             $content = "adminpanel.html";
             break;
@@ -55,6 +58,10 @@ if(isset($_GET['p']))
         {
             $adminContent = "404.html";
         }
+    }
+    else
+    {
+        $adminContent = "newpost.html";
     }
 }
 else
