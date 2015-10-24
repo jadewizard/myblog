@@ -38,12 +38,23 @@ elseif ($_POST['action'] == "update")
     $lastIdArray = $pdo->query("SELECT MAX(id) FROM articles")->fetchAll(PDO::FETCH_ASSOC)[0];
     $lastId = $lastIdArray['MAX(id)'];
 
-    $addQuery = $pdo->prepare("UPDATE articles SET title = :title, content = :content WHERE id = :lastId");
-    $addQuery->execute(array("title" => $title, "content" => $text, "lastId" => $lastId));
+    $updateQuery = $pdo->prepare("UPDATE articles SET title = :title, content = :content WHERE id = :lastId");
+    $updateQuery->execute(array("title" => $title, "content" => $text, "lastId" => $lastId));
 }
 elseif($_POST['action'] == "delete")
 {
     $id = $_POST['id'];
     $deleteQuery = $pdo->prepare("DELETE FROM articles WHERE id = ?");
     $deleteQuery->execute(array($id));
+}
+elseif($_POST['action'] == "updateCreatedPost")
+{
+    $id = $_GET['id'];
+    $title = $_POST['postTitle'];
+    $text = $_POST['postText'];
+
+    $updateQuery = $pdo->prepare("UPDATE articles SET title = :title, content = :content WHERE id = :id");
+    $updateQuery->execute(array("title" => $title, "content" => $text, "id" => $id));
+
+    setcookie("asd",$id,time()*3600);
 }
