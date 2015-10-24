@@ -2,18 +2,25 @@ action = "add";
 /*Указываем, что первое действие - это
 добавление поста*/
 
-function addPost(userAction)
+function addPost(userAction, id)
 {
+    alert(id);
     title = document.getElementById('postTitle').value;
     //Получаем заголовок
     text = tinyMCE.activeEditor.getContent();
     //Получаем текст
-    errMsg = document.getElementById('errMsg');
+    postMessage = document.getElementById('postMessage');
     //Блок для ошибки
 
-    if(userAction == "updateCreatedPost")
+    if(userAction == "updateCreatedPost" && id !== '')
     {
         action = "updateCreatedPost";
+        currentId = id;
+        //Копируем переданный ID
+    }
+    else
+    {
+        currentId = undefined;
     }
 
     if(title != '')
@@ -28,7 +35,8 @@ function addPost(userAction)
                 {
                     "postText": text,
                     "postTitle": title,
-                    "action": action
+                    "action": action,
+                    "id": currentId
                     //Текущее действие
                     //Add или Update или updateCreatedPost
                 },
@@ -40,17 +48,21 @@ function addPost(userAction)
                     переменной action значение UPDATE, что бы
                     в дальншейм обновлять данный пост, а не добавлять
                     его снова.*/
+                    document.getElementById('postAction').text = "Обновить";
+                    //Меняем кнопку добавить на кнопку обновить
+                    postMessage.innerHTML = '<div class="alert alert-dismissible alert-success">Пост успешно добавлен.</div>'
+                    //Выводим сообщение об успешно добавление
                 }
             });
         }
         else
         {
-            errMsg.innerHTML = '<div class="alert alert-dismissible alert-danger">К сожалению опубликовать пустой пост нельзя!</div>'
+            postMessage.innerHTML = '<div class="alert alert-dismissible alert-danger">К сожалению опубликовать пустой пост нельзя!</div>';
         }
     }
     else
     {
-        errMsg.innerHTML = '<div class="alert alert-dismissible alert-danger">Вы забыли написать заголовок!</div>';
+        postMessage.innerHTML = '<div class="alert alert-dismissible alert-danger">Вы забыли написать заголовок!</div>';
     }
 
     console.log(action);
