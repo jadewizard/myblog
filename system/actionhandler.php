@@ -6,7 +6,7 @@
 * Buryakov.su
 */
 
-if($_GET['p'] == "adminpanel" && isset($_GET['a']))
+if(isset($_GET['p']) && $_GET['p'] == "adminpanel" && isset($_GET['a']))
 {
     if(isset($_GET['a']) == "edit" && isset($_GET['id']))
     {
