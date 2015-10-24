@@ -45,6 +45,11 @@ if(isset($_GET['p']))
         elseif($_GET['a'] == "edit")
         {
             $adminContent = "editlist.html";
+
+            if(isset($_GET['id']))
+            {
+                $adminContent = "editpost.html";
+            }
         }
         else
         {
