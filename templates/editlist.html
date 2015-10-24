@@ -10,12 +10,12 @@
   </thead>
   <tbody>
   {% for element in postArray %}
-    <tr>
+    <tr id="tr{{ element.id }}">
       <td>{{ element.id }}</td>
       <td>{{ element.title }}</td>
       <td>{{ element.category }}</td>
       <td>{{ element.postdate }}</td>
-      <td>Удалить / Редктировать</td>
+      <td><a href="#" onclick="deletePost({{ element.id }})">Удалить</a> / Редктировать</td>
     </tr>
     {% endfor %}
   </tbody>
