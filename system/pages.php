@@ -35,6 +35,22 @@ if(isset($_GET['p']))
             $content = 'fullpost.html';
         }
     }
+
+    if($_GET['p'] == "adminpanel" && isset($_GET['a']))
+    {
+        if($_GET['a'] == "add")
+        {
+            $adminContent = "newpost.html";
+        }
+        elseif($_GET['a'] == "edit")
+        {
+            $adminContent = "editlist.html";
+        }
+        else
+        {
+            $adminContent = "404.html";
+        }
+    }
 }
 else
 {
@@ -45,6 +61,7 @@ else
 $template = $twig->loadTemplate('index.html');
 
 echo $template->render(array("content" => $content,
+                             "adminContent" => $adminContent,
                              "search" => 'search.html',
                              "way" => 'way.html',
                              'header' => 'header.html'));
