@@ -8,4 +8,4 @@
 
 $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
 
-$pdo = new PDO("mysql:dbname=blog;host=localhost;charset=utf8","root","123",$options);
+$pdo = new PDO("mysql:dbname=blog;host=localhost;charset=utf8","root","211996dima",$options);
