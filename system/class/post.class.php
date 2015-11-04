@@ -10,7 +10,7 @@ class post
 {
     function __construct()
     {
-        global $pdo,$twig;
+        global $pdo,$twig,$pgManager;
 
         $resultArray = $pdo->query("SELECT * FROM articles");
         $postArray = $resultArray->fetchAll(PDO::FETCH_ASSOC);
@@ -23,7 +23,10 @@ class post
             //до 270 символов, затем убираем пробел в конце и проставляем ...
         }
 
-        $twig->addGlobal("postArray",$postArray);
+        $expPostArray = $this->expArray($postArray);
+
+        $twig->addGlobal("postArray",$expPostArray);
+
     }
 
     public function getPostById($id)
@@ -46,5 +49,40 @@ class post
         $title = $resultArray->fetchAll(PDO::FETCH_ASSOC);
 
         return $title[0]['title'];
+    }
+
+    public function expArray($inputArray)
+    {
+        global $pgManager;
+
+        $pagesCount = ceil(count($inputArray) / $pgManager->postCount);
+        // MAX возможное кол-во страниц.
+
+        $expArray = array_chunk($inputArray, $pgManager->postCount);
+        // Разбиваем массив на подмассивы, для пагинации.
+        // Индекс массива == # странцы.
+
+        if(isset($_GET['n']))
+        {
+            $currentPage = $_GET['n'];
+            // Текущая страница
+
+            if($currentPage <= $pagesCount) // Проверяем на наличе текущей странице в массиве
+            {
+                if(preg_match("/[0-9]/", $currentPage))
+                {
+                    return $expArray[$currentPage - 1];
+                }
+            }
+            else
+            {
+                echo "Not defined";
+                // Такой страницы нет.
+            }
+        }
+        else
+        {
+            return $expArray[0];
+        }
     }
 }
