@@ -36,6 +36,34 @@
 
     </div>
 
+    <div style="float: right;">
+      <ul class="pagination">
+        <li class="disabled"><a href="{{ pagesArray.prev }}">« Назад</a></li>
+
+          {# ДОБАВЛЯЕМ ДОП-НЫЕ ССЫЛКИ ПО БОКАМ #}
+          {% if pagesArray.next == null and pagesArray.pageCount >= 3 %}
+            <li><a href="{{ pagesArray.prev - 1 }}">{{ pagesArray.prev - 1}}</a></li>
+          {% endif %}
+
+          {% if pagesArray.prev != null %}
+            <li><a href="{{ pagesArray.prev }}">{{ pagesArray.prev }}</a></li>
+          {% endif %}
+
+          <li class="active"><a href="{{ pagesArray.current }}">{{ pagesArray.current }}</a></li>
+
+          {% if pagesArray.next != null %}
+            <li><a href="{{ pagesArray.next }}">{{ pagesArray.next }}</a></li>
+          {% endif %}
+
+          {# ДОБАВЛЯЕМ ДОП-НЫЕ ССЫЛКИ ПО БОКАМ #}
+          {% if pagesArray.prev == null and pagesArray.pageCount >= 3 %}
+            <li><a href="{{ pagesArray.next + 1}}">{{ pagesArray.next + 1}}</a></li>
+          {% endif %}
+
+        <li><a href="{{ pagesArray.next }}">Вперёд »</a></li>
+      </ul>
+    </div>
+
   </div>
   <script src="js/bootstrap.min.js"></script>
 </body>
