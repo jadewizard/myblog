@@ -4,7 +4,7 @@ action = "add";
 
 function addPost(userAction, id)
 {
-    alert(id);
+    // alert(id);
     title = document.getElementById('postTitle').value;
     //Получаем заголовок
     text = tinyMCE.activeEditor.getContent();
