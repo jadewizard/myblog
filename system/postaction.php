@@ -11,7 +11,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 
 $opt = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
-$pdo = new PDO("mysql:dbname=blog;host=localhost;charset=utf8","root","211996dima",$opt);
+$pdo = new PDO("mysql:dbname=blog;host=localhost;charset=utf8","root","123",$opt);
 
 /*
 ===================== ПОЯСНЕНИЕ ==========================
